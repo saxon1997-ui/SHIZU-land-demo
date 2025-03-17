@@ -189,7 +189,7 @@ window.Vallage = {
                 <p>你有些懵，但当你仔细感受之后</p>
                 <p>感受到石碑下有一丝力量涌动让你厌恶至极</p>
                 <p>不过天色已经很暗了，你需要尽快找到休息的地方</p>
-                <p>button class="choice-btn" onclick="handleChoice('z2211')">去往湖边</button>
+                <button class="choice-btn" onclick="handleChoice('z2211')">去往湖边</button>
                 <button class="choice-btn" onclick="handleChoice('z2213')">在附近找地方休息</button>
             `;
             }

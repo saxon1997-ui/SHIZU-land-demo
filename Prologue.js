@@ -95,7 +95,7 @@ window.Prologue = {
                 <p>但你惊奇地发现，坠落感消失了，随之消失的还有耳边的风</p>
                 <p>睁开眼，你发现你被光芒包裹着，你竟然悬浮在了空中</p>
                 <p>你眼前一花，回过神来，你发现你站在一片雪原之中</p>
-                <p>寒风刺骨，你注意到很远的半山腰上有座木屋木屋</p>
+                <p>寒风刺骨，你注意到很远的半山腰上有座木屋</p>
                 <button class="choice-btn" onclick="handleChoice('c421')">前往木屋</button>
                 <button class="choice-btn" onclick="handleChoice('c422')">认为危险，远离木屋</button>
             `;

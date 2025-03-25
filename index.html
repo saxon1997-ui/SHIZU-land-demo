@@ -6,130 +6,452 @@
     <title>你已坠入始祖大陆！</title>
     <style>
         /* 设置全局样式 */
+        @font-face {
+        font-family: 'zpix';
+        src: url('fonts/zpix.woff2') format('woff2');
+}
         body {
-            font-family: Arial, sans-serif; /* 使用 Arial 字体 */
-            margin: 20px; /* 页面边距 */
-             /* 新增背景样式 */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            transition: background-image 0.5s ease;
-        }
+        font-family: 'zpix', cursive; /* 主像素字体 */
+        image-rendering: pixelated; /* 保持像素化渲染 */
+        margin: 0; /* 去除默认的 body 边距 */
+        padding: 0;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        transition: background-image 0.5s ease, 
+    }
         /* 游戏内容框的样式 */
-        .game-box {
-            max-width: 500px; /* 最大宽度 */
-            margin: 0 auto; /* 水平居中 */
-            padding: 20px; /* 内边距 */
-            border: 1px solid #ccc; /* 边框 */
-            background-color: #f9f9f9; /* 背景颜色 */
-            background-color: rgba(249, 249, 249, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            font-size: 19px; /* 设置文本字体 */
-        }
-        /* 标题样式 */
-        h1 {
-            font-size: 34px; /* 设置标题字体大小为 24px */
-        }
-        /* 按钮的样式 */
-        .choice-btn {
-            display: block; /* 块级元素，独占一行 */
-            margin: 12px 0; /* 上下边距 */
-            padding: 12px; /* 内边距 */
-            background-color: #000000; /* 背景颜色 */
-            color: white; /* 文字颜色 */
-            border: none; /* 无边框 */
-            cursor: pointer; /* 鼠标悬停时显示手型 */
-            width: 480px; /* 固定宽度 */
-            height: 60px; /* 固定高度 */
-            border-radius: 15px;
-            text-align: center; /* 文字水平居中 */
-            line-height: center; /* 文字垂直居中，值等于按钮高度 */
-            font-size: 16px; /* 设置按钮字体 */
-        }
-        #character-panel {
-            position: fixed; /* 固定定位 */
-            top: 20px;
-            left: 20px;
-            width: 200px;
-            background: rgba(50, 50, 50, 0.9);
-            border: 2px solid #6eb300;
-            border-radius: 8px;
-            padding: 15px;
-            color: white;
-            z-index: 1000; /* 确保在最上层 */
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        #character-panel.show {
-            opacity: 1;
-        }
-        #pet-panel {
-            margin-top: 12px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid #6eb300;
-            border-radius: 8px;
-            opacity: 0  ;
-        }
-        #pet-panel h3 {
-            font-size: 18px;
-            margin: 12px;
-            color: #6eb300;
-            margin-left: -1px; 
-        }
-        #pet-panel .status-item {
-            margin: 6px 0;
-            font-size: 14px;
-        }
-        #pet-panel.show {
-            opacity: 1;
-        }
-        .status-item {
-            margin: 8px 0;
-            font-size: 14px;
-        }
-        #inventory-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-        .inventory-item {
-            background: rgba(255,255,255,0.1);
-            padding: 5px;
-            border-radius: 4px;
-            font-size: 12px;
-            border: 1px solid rgba(0, 217, 255, 0.685); 
-        }
-        #weapon-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-bottom: 15px; /* 与物品栏保持间距 */
-        }
-        .weapon-item {
-            background: rgba(255, 215, 0, 0.2); /* 金色背景，透明度20% */
-            padding: 5px;
-            border-radius: 4px;
-            font-size: 12px;
-            border: 1px solid rgba(255, 215, 0, 0.5); /* 金色边框 */
-        }
-        /* 按钮悬停时的样式 */
-        .choice-btn:hover {
-            background-color: #6eb300; /* 背景颜色变深 */
-        }
+    .game-box {
+        border: 4px solid #2d1b0f; /* 深棕色边框 */
+        background-color: #e3c9a1; /* 羊皮纸底色 */
+        border-radius: 0; /* 直角 */
+        box-shadow: 8px 8px 0 #2d1b0f55; /* 像素偏移阴影 */
+        font-size: 22px;
+        max-width: 600px; /* 适当加宽 */
+        margin: 0 auto; /* 水平居中 */
+        padding: 20px; /* 内边距 */
+        top: 30px; /* 增加顶部间距 */
+        position: relative; /* 相对定位 */
+    }
+    /* 标题样式 */
+    h1 {
+        font-family: 'zpix', cursive; /* 标题专用像素字体 */
+        color: #4a752c; /* 星露谷绿色 */
+        text-shadow: 2px 2px #2d1b0f;
+    }
+    /* 按钮像素化 */
+    .choice-btn {
+        background-color: #4a752c; /* 自然绿色 */
+        border: 2px solid #2d1b0f;
+        border-radius: 0;
+        font-family: 'zpix', cursive;
+        font-size: 20px;
+        transition: all 0.1s;
+        box-shadow: 3px 3px 0 #2d1b0f;
+        line-height: 60px; /* 修正垂直居中 */
+    }
+    .choice-btn:hover {
+        background-color: #6eb300;
+        transform: translate(2px, 2px);
+        box-shadow: 1px 1px 0 #2d1b0f;
+    }
+    #character-panel {
+        top: 20px;  /* 增加顶部间距 */
+        left: 20px; /* 增加左侧间距 */
+        width: 220px; /* 增加宽度 */
+        padding: 15px;
+        background: #2d1b0f; /* 深棕色背景 */
+        border: 4px solid #6eb300; /* 更粗的绿色边框 */
+        border-radius: 0; /* 保持直角 */
+        font-family: 'zpix', cursive; /* 像素字体 */
+        font-size: 16px; /* 增大字体 */
+        color: #e3c9a1; /* 浅黄色文字 */
+        opacity: 1; 
+        transform: scale(0.9); /* 恢复原始大小 */
+        box-shadow: 6px 6px 0 #00000033; /* 添加阴影 */
+        z-index: 1000; /* 确保在其他内容之上 */
+        position: fixed; /* 固定定位 */
+        max-height: 90vh; /* 最大高度为视口的90% */
+        overflow-y: auto; /* 添加垂直滚动条 */
+    }
+    /* 面板标题 */
+    #character-panel h3 {
+        font-size: 20px; /* 增大标题字体 */
+        color: #6eb300; /* 绿色标题 */
+        text-shadow: 2px 2px #000000; /* 添加文字阴影 */
+        margin: 0 0 10px 0; /* 调整标题间距 */
+    }
+    #character-panel.show {
+        opacity: 1;
+    }
+    /* 状态条目 */
+    .status-item {
+        background: #4a752c33; /* 半透明绿色背景 */
+        padding: 8px;
+        margin: 6px 0;
+        border: 2px solid #6eb300; /* 绿色边框 */
+        font-size: 16px; /* 增大状态字体 */
+        color: #ffffff; /* 白色文字 */
+    }
+    /* 武器和物品栏 */
+    #weapon-container, #inventory-container {
+        gap: 6px; /* 增加间距 */
+        margin: 10px 0; /* 增加上下间距 */
+    }
+    .weapon-item, .inventory-item {
+        display: flex; /* 使用 Flexbox 布局 */
+        align-items: center; /* 垂直居中 */
+        border: 2px solid; /* 边框样式 */
+        margin: 5px;
+        padding: 8px;
+        position: relative;
+        color: #ffffff; /* 白色文字 */
+        height: 20px; 
+    }
+    .item-icon {
+        width: 32px;
+        height: 32px;
+        image-rendering: pixelated;
+    }
+
+    /* 品质颜色指示器 */
+    .item-quality {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        width: 10px;
+        height: 10px;
+        border: 1px solid #000;
+    }
+    /* 宠物面板 */
+    #pet-panel {
+        margin-top: 12px;
+        padding: 10px;
+        background: #4a752c22; /* 半透明绿色背景 */
+        border: 2px dashed #6eb300; /* 绿色虚线边框 */
+        color: #ffffff; /* 白色文字 */
+        opacity: 1; 
+    }
+    #pet-panel h3 {
+        font-size: 16px; /* 增大宠物标题字体 */
+        color: #6eb300; /* 绿色标题 */
+        text-shadow: 2px 2px #000000; /* 添加文字阴影 */
+        margin: 0 0 8px 0; /* 调整标题间距 */
+    }
+    /* 宠物状态 */
+    #pet-panel .status-item {
+        background: transparent; /* 透明背景 */
+        border: none; /* 无边框 */
+        padding: 4px 0; /* 调整间距 */
+    }
+    #pet-panel.show {
+        opacity: 1;
+    }
+    /* 优化按钮间距 */
+    .choice-btn {
+        margin: 8px auto; /* 统一间距 */
+        width: 95%; /* 自适应宽度 */
+        max-width: 560px; /* 最大宽度限制 */
+    }
+    /* 优化面板内部布局 */
+    #character-panel h3 {
+        margin: 8px 0;
+        font-size: 16px;
+    }
+    .status-item {
+        padding: 3px;
+        margin: 3px 0;
+    }
+    .puzzle-hint {
+        color: #f0e6d2; /* 更亮的米黄色文字 */
+        border: 2px solid #6eb300; /* 更粗的绿色边框 */
+        padding: 12px;
+        margin: 15px 0;
+        background: #2d1b0fcc; /* 更深的半透明背景 */
+        box-shadow: 4px 4px 0 #00000033; /* 添加像素风阴影 */
+        font-family: 'zpix', cursive; /* 统一像素字体 */
+        font-size: 18px;
+        line-height: 1.5;
+        position: relative;
+        border-radius: 4px; /* 轻微圆角 */
+    }
+    .color-btn {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 3px solid #2d1b0f;
+        margin: 10px;
+        font-size: 32px;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+    .color-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+    /* 不同颜色按钮的样式 */
+    .color-btn.red {
+        background: #ff4444;
+        text-shadow: 2px 2px #8b0000;
+    }
+    .color-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+    .color-btn.blue {
+        background: #4444ff;
+        text-shadow: 2px 2px #00008b;
+    }
+    .color-btn.yellow {
+        background: #ffff44;
+        text-shadow: 2px 2px #8b8b00;
+    }
+    .color-btn.wood {
+        background: #056b0b;
+        text-shadow: 2px 2px #034110;
+    }
+    .color-btn.dirt {
+        background: #b46702;
+        text-shadow: 2px 2px #7e5c00;
+    }
+    .puzzle-success {
+        color: #000000;
+        animation: glow 1s ease-in-out;
+    }
+    .puzzle-fail {
+        color: #ff5555;
+        animation: shake 0.5s;
+    }
+    @keyframes glow {
+        from { text-shadow: 0 0 10px #52e75a; }
+        to { text-shadow: 0 0 20px #7ce662; }
+    }
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(10px); }
+        50% { transform: translateX(-10px); }
+        75% { transform: translateX(5px); }
+        100% { transform: translateX(0); }
+    }
+    .game-over-text {
+        font-size: 24px;
+        color: #ff5555;
+        text-shadow: 2px 2px #8b0000;
+        animation: game-over-pulse 1.5s infinite;
+    }
+    @keyframes game-over-pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    .pixel-timer {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-family: 'zpix', cursive;
+        font-size: 24px;
+        color: #ff5555;
+        text-shadow: 2px 2px #8b0000;
+        background-color: #2d1b0f;
+        padding: 10px;
+        border: 4px solid #6eb300;
+        border-radius: 0;
+        box-shadow: 4px 4px 0 #00000033;
+        z-index: 1000;
+        transition: opacity 0.3s ease;
+    }
+    .pixel-timer.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+    /* 词典面板样式 */
+    #dictionary-panel {
+        position: fixed;
+        top: 90px;
+        right: 20px;
+        width: 220px;
+        padding: 15px;
+        background: #2d1b0f;
+        border: 4px solid #6eb300;
+        border-radius: 0;
+        font-family: 'zpix', cursive;
+        font-size: 16px;
+        color: #e3c9a1;
+        opacity: 0;
+        display: block;
+        transform: scale(0.9);
+        box-shadow: 6px 6px 0 #00000033;
+        z-index: 1000;
+        max-height: (90vh - 120px);
+        overflow-y: auto;
+        transition: all 0.3s ease;
+    }
+
+    #dictionary-panel.show {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    #dictionary-panel h3 {
+        font-size: 20px;
+        color: #6eb300;
+        text-shadow: 2px 2px #000000;
+        margin: 0 0 10px 0;
+    }
+
+    #item-detail-panel {
+        display: none;
+        margin-top: 15px;
+        padding: 10px;
+        background: #4a752c33;
+        border: 2px solid; /* 移除固定颜色，由JS动态设置 */
+        border-radius: 4px;
+    }
+
+    #item-detail-panel h3 {
+        color: #6eb300;
+        margin-top: 0;
+    }
+    
+    #item-detail-quality {
+    color: #ffff44; /* 品质文字颜色 */
+    margin: 5px 0;
+    }
+
+    #item-detail-price {
+        font-style: italic;
+        color: #ffff44;
+    }
+
+    .hidden {
+        display: none;
+    }
+    /* 通用音频控制条样式 */
+    .audio-control {
+        position: fixed;
+        right: 10px;
+        background: rgba(45, 27, 15, 0.8);
+        padding: 5px 10px;
+        border: 2px solid #6eb300;
+        border-radius: 0;
+        font-family: 'zpix', cursive;
+        color: #e3c9a1;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* 音乐控制条单独定位 */
+    #music-control {
+        top: 10px;
+    }
+
+    /* 音效控制条单独定位 */
+    #sfx-control {
+        top: 50px;
+    }
+
+    /* 统一按钮样式 */
+    .audio-control button {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        image-rendering: pixelated;
+        padding: 0;
+        margin: 0;
+        line-height: 1;
+    }
+
+    /* 统一滑块样式 */
+    .audio-control input[type="range"] {
+        width: 80px;
+        height: 8px;
+        background: #4a752c;
+        outline: none;
+        border: 1px solid #2d1b0f;
+    }
+
+    /* 滑块拇指样式 */
+    .audio-control input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 12px;
+        height: 12px;
+        background: #e3c9a1;
+        border: 1px solid #2d1b0f;
+    }
+
+    /* 统一文字样式 */
+    .audio-control span {
+        font-size: 16px;
+        text-shadow: 1px 1px #2d1b0f;
+        min-width: 30px;
+    }
     </style>
-    <script src="Prologue.js"></script>
-    <script src="Chapter1.js"></script>
-    <script src="Vallage.js"></script>
-    <script src="Chapter1_2.js"></script>
-    <script src="battle.js"></script>
-    <script src="changePanel.js"></script>
-    <script src="end_restart.js"></script>
-    <script src="enemies.js"></script>
-    <script src="save.js"></script>
+    <script src="function/battle.js"></script>
+    <script src="function/puzzle.js"></script>
+    <script src="core/changePanel.js"></script>
+    <script src="core/end_restart.js"></script>
+    <script src="core/item.js"></script>
+    <script src="core/audio.js"></script>
+    <script src="function/enemies.js"></script>
+    <script src="chapter/Prologue.js"></script>
+    <script src="chapter/Chapter1.js"></script>
+    <script src="chapter/Vallage.js"></script>
+    <script src="chapter/Chapter1_2.js"></script>
+    <script src="chapter/Thanks.js"></script>
+
+
 </head>
 <body>
+    <!-- 欢迎界面 -->
+    <div id="welcome-screen" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #2d1b0f;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'zpix', cursive;
+        color: #e3c9a1;
+        text-align: center;
+        cursor: pointer;
+        image-rendering: pixelated;
+    ">
+    <h1 style="font-size: 48px; margin-bottom: 30px; text-shadow: 3px 3px #6eb300;">
+        欢迎来到始祖大陆！
+    </h1>
+    <p style="font-size: 32px; line-height: 1.5; max-width: 80%;">
+        这是一个充满神秘与冒险的世界<br>
+        你的选择将决定故事的走向...<br>
+        温馨提示：使用电脑体验更佳<br>
+        (bgm和音效系统有点问题，请见谅)
+    </p>
+    <div style="
+        margin-top: 50px;
+        padding: 10px 20px;
+        border: 3px solid #6eb300;
+        background: #4a752c33;
+        animation: pulse 1.5s infinite;
+    ">
+        点击任意位置开始游戏
+    </div>
+</div>
+
+<style>
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+</style>
     <div id="character-panel">
         <h3>角色状态</h3>
         <div class="status-item">
@@ -143,6 +465,10 @@
         <div class="status-item">
             <span>金&emsp;币：</span>
             <span id="gold-value">0</span>
+        </div>
+        <div class="status-item">
+            <span>死亡次数：</span>
+            <span id="global-death-count">0</span> 
         </div>
         <h3>持有武器</h3>
         <div id="weapon-container"></div> 
@@ -161,19 +487,49 @@
         </div>
     </div>
     <div class="game-box">
+        <div id="timer-display" class="pixel-timer hidden">10</div>
         <h1 id="chapter-title"></h1>
         <div id="content"></div>
     </div>
+    <div id="dictionary-panel" class="hidden">
+        <h3>物品词典</h3>
+        <div id="dictionary-items-container"></div>
+        <div id="item-detail-panel">
+            <h3 id="item-detail-name"></h3>
+            <img id="item-detail-icon" class="item-icon">
+            <p id="item-detail-description"></p>
+            <p id="item-detail-price"></p>
+        </div>
+    </div>
 
+    <!-- 音乐控制面板 -->
+    <div id="music-control" class="audio-control">
+        <button id="music-toggle">🔊</button>
+        <input type="range" id="volume-control" min="0" max="1" step="0.1" value="0.5">
+        <span>音乐</span>
+    </div>
+
+    <!-- 音效控制面板 -->
+    <div id="sfx-control" class="audio-control">
+        <button id="sfx-toggle">🔔</button>
+        <input type="range" id="sfx-volume-control" min="0" max="1" step="0.1" value="0.7">
+        <span>音效</span>
+    </div>
+
+    <!-- 章节背景音乐 -->
+    <audio id="bgm-prologue" loop src="audio/bgm/prologue.mp3"></audio>
+    <audio id="bgm-chapter1" loop src="audio/bgm/chapter1.mp3"></audio>
+    <audio id="bgm-chapter1_2" loop src="audio/bgm/chapter1_2.mp3"></audio>
 
     <!-- 全局控制器 -->
     <script>
         // 在 HTML 中定义全局变量
+        let globalDeathCount = parseInt(sessionStorage.getItem('globalDeathCount')) || 0;
         let characterData = {
             hp: 100,
             power: 5,
             gold: 0,
-            weapon: [],
+            weapon: null,
             inventory: ['绿宝石'],
         };
         // 初始化宠物数据
@@ -182,40 +538,71 @@
             hp: 0,
             power: 0,
         };
+        document.addEventListener('keydown', function(e) {
+        // 检查词典是否已解锁
+        if (currentChapter === Chapter1_2 && e.key.toLowerCase() === 'd') {
+            ItemSystem.showDictionary();
+        }
+        });
     </script>
     <script>
         let currentChapter = null;
-
         // 初始化游戏
         function initGame() {
-        currentChapter = Prologue;
-        currentChapter.initialize(); // 调用章节初始化方法
+            localStorage.removeItem('gameData');
+            currentChapter = Prologue;
+            currentChapter.initialize(); // 调用章节初始化方法
+            initAudio();
         }
         
         // 全局选择处理器
         function handleChoice(choice) {
         // 检测章节切换（例如从序章到第一章）
-        if (choice === 'd0') {
-            currentChapter = Chapter1;
-            currentChapter.initialize();
-            return;
-        }
-        else if (choice === 'z0') {
-            currentChapter = Vallage;
-            currentChapter.initialize();
-            return;
-        }
-        else if (choice === 'b0') {
-            currentChapter = Chapter1_2;
-            currentChapter.initialize();
-            return;
-        }
+            if (choice === 'd0') {
+                currentChapter = Chapter1;
+                currentChapter.initialize();
+                return;
+            }
+            else if (choice === 'z0') {
+                currentChapter = Vallage;
+                currentChapter.initialize();
+                return;
+            }
+            else if (choice === 'b0') {
+                currentChapter = Chapter1_2;
+                currentChapter.initialize();
+                return;
+            }
+            else if (choice === 'T0') {
+                currentChapter = Thanks;
+                currentChapter.initialize();
+                return;
+            }
 
-        // 正常处理选择
-        currentChapter.handleChoice(choice);
+            // 正常处理选择
+            currentChapter.handleChoice(choice);
         }
 
         window.onload = initGame;
+        
+        const GameTimer = { 
+        // 初始化计时（在页面加载时调用）
+            start() {
+                // 如果已有 startTime，说明是页面刷新，不重置
+                if (!sessionStorage.getItem('gameStartTime')) {
+                    sessionStorage.setItem('gameStartTime', performance.now());
+                }
+            },
+
+            // 获取总游玩时间（返回毫秒数，可自行格式化）
+            getPlayTime() {
+                const startTime = parseFloat(sessionStorage.getItem('gameStartTime'));
+                if (!startTime) return 0;
+                return performance.now() - startTime;
+            }
+        };
+        GameTimer.start();
+
     </script>
 </body>
 </html>

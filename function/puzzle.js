@@ -66,7 +66,7 @@ window.PuzzleModule = {
             土土金土火，水水木火金<br>
             `,
             description_passed: '你获得了古藤的滋润，生命值+30',
-            timeLimit: 17.5,
+            timeLimit: 17,
             next:'b5',
             success: {
                 message: '✨石碑发出耀眼的光芒！',

@@ -14,7 +14,7 @@ window.PuzzleModule = {
             description: `
             石门前有五枚颜色各异的符文<br>
             <br>
-            门前的石碑上写着：水滋润大地，火守卫生命，金斩尽邪祟
+            门前的石碑上写着：水滋润大地，火守卫生命，金斩尽邪祟(3)
             `,
             description_passed: '你获得了古藤的滋润，生命值+30',
             success: {
@@ -29,7 +29,7 @@ window.PuzzleModule = {
         power_1: {
             id: 'power_1',
             sequence: ['yellow', 'wood','blue','red','dirt','dirt','wood','blue','yellow','red'],
-            description:'金木水火土，土木水金火',
+            description:'金木水火土，土木水金火(10)',
             description_passed: '你获得了古藤的滋润，生命值+30',
             timeLimit: 10,
             next:'b411',
@@ -45,7 +45,7 @@ window.PuzzleModule = {
         mental_1: {
             id: 'mental_1',
             sequence: ['yellow', 'yellow','yellow'],
-            description:'“火克？，？生水，？克木”',
+            description:'“火克？，？生水，？克木(3)”',
             description_passed: '你获得了古藤的滋润，生命值+30',
             next:'b421',
             success: {
@@ -63,7 +63,7 @@ window.PuzzleModule = {
             description:`
             水火木土金，水金木水土<br>
             <br>
-            土土金土火，水水木火金<br>
+            土土金土火，水水木火金(20)<br>
             `,
             description_passed: '你获得了古藤的滋润，生命值+30',
             timeLimit: 17,
@@ -83,7 +83,7 @@ window.PuzzleModule = {
             description:`
             兄弟各持刀，夫妻互不容<br>
             <br>
-            木匠独雕刻，卖与憨厚郎<br>
+            木匠独雕刻，卖与憨厚郎(6)<br>
             `,
             description_passed: '你获得了古藤的滋润，生命值+30',
             next:'b421111',

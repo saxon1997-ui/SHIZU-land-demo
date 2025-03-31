@@ -13,8 +13,14 @@ window.Thanks = {
             <p>非常感谢您的游玩!</p>
             <p>您的游戏时长为：游玩时间：${minutes}分${seconds}秒</p>
             <p>您的死亡次数为：${globalDeathCount}</p>
-            <p>如您有任何建议，请联系邮箱 saxonzzw@sina.com</p>
+            <p>如您有任何建议，请联系邮箱 shizuland@sina.com</p>
             <p>非常感谢您的支持！</p>
+            <p>如果您需要获取更多信息</p>
+            <p>或亲切问候（打赏）作者</p>
+            <p>请扫描下方二维码关注公众号</p>
+            <div class="gamebox">
+                <img src="images/qrcode.jpg" alt="公众号二维码" style="max-width: 200px; height: auto;">
+            </div>
             <p>另：黑纸契约和白纸契约在村庄直线中有不同的剧情</p>
             <button class="choice-btn" onclick="restartGame()">新游戏</button>
         `;
